@@ -1,0 +1,1855 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>铁粉空间 - 官方创作者社区,真实记录每一份热爱</title>
+<meta name="description" content="铁粉空间官方网站，专注真实生活记录的原创视频社区，汇聚多元创作者，用高清影像分享经验、故事与热爱，陪伴每一位用户共同成长。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2324403a'/%3E%3Cpath d='M26 20 L46 32 L26 44 Z' fill='%23ffb36b'/%3E%3C/svg%3E">
+<style>
+:root{
+  --tf-deep:#1d3a34;
+  --tf-deep-2:#24403a;
+  --tf-amber:#f0a35e;
+  --tf-amber-soft:#fde3c8;
+  --tf-cream:#faf5ec;
+  --tf-ink:#2c3733;
+  --tf-muted:#6f7c76;
+  --tf-line:#e2dbcd;
+  --tf-green:#5f8b6f;
+  --tf-card:#ffffff;
+  --tf-radius:18px;
+  --tf-shadow:0 14px 34px rgba(29,58,52,.10);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  background:var(--tf-cream);
+  color:var(--tf-ink);
+  line-height:1.75;
+  font-size:16px;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;cursor:pointer;}
+h1,h2,h3,h4{margin:0 0 .5em;line-height:1.35;font-weight:700;}
+h2{font-size:clamp(1.4rem,2.6vw,1.9rem);}
+h3{font-size:1.12rem;}
+p{margin:0 0 1em;}
+ul{margin:0;padding:0;list-style:none;}
+
+/* ===== 吸顶公告 + 页头 ===== */
+.tf-stickywrap{
+  position:sticky;
+  top:0;
+  z-index:80;
+  box-shadow:0 4px 18px rgba(29,58,52,.08);
+}
+.tf-noticebar{
+  background:linear-gradient(90deg,#24403a,#33584e 60%,#3d6a5b);
+  color:#f6efe2;
+  font-size:.86rem;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px clamp(14px,4vw,44px);
+  overflow:hidden;
+}
+.tf-noticebar__tag{
+  flex:0 0 auto;
+  background:var(--tf-amber);
+  color:#3a2410;
+  font-weight:700;
+  font-size:.74rem;
+  padding:2px 9px;
+  border-radius:999px;
+  letter-spacing:.5px;
+}
+.tf-noticebar__list{
+  flex:1 1 auto;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.tf-noticebar__list b{color:#ffd9ad;font-weight:600;}
+.tf-noticebar__link{
+  flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;
+  padding:2px 12px;
+  font-size:.76rem;
+  transition:background .2s;
+}
+.tf-noticebar__link:hover{background:rgba(255,255,255,.14);}
+
+.tf-header{
+  background:rgba(250,245,236,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--tf-line);
+}
+.tf-header__inner{
+  max-width:1240px;
+  margin:0 auto;
+  padding:10px clamp(14px,4vw,44px);
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.tf-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+.tf-brand__mark{
+  width:42px;height:42px;
+  border-radius:13px;
+  background:var(--tf-deep);
+  display:grid;place-items:center;
+  color:var(--tf-amber);
+  font-weight:800;
+  font-size:1.05rem;
+  letter-spacing:-1px;
+}
+.tf-brand__text{line-height:1.2;}
+.tf-brand__name{font-weight:800;font-size:1.12rem;letter-spacing:1px;color:var(--tf-deep);}
+.tf-brand__slogan{font-size:.68rem;color:var(--tf-muted);letter-spacing:2px;}
+
+.tf-nav{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex:1 1 auto;
+  flex-wrap:wrap;
+}
+.tf-nav a{
+  font-size:.9rem;
+  padding:6px 11px;
+  border-radius:9px;
+  color:var(--tf-ink);
+  transition:background .2s,color .2s;
+}
+.tf-nav a:hover{background:var(--tf-amber-soft);color:var(--tf-deep);}
+
+.tf-header__tools{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+.tf-search{
+  display:flex;
+  align-items:center;
+  background:#fff;
+  border:1px solid var(--tf-line);
+  border-radius:999px;
+  padding:3px 4px 3px 13px;
+  transition:border-color .2s,box-shadow .2s;
+}
+.tf-search:focus-within{border-color:var(--tf-green);box-shadow:0 0 0 3px rgba(95,139,111,.16);}
+.tf-search input{
+  border:0;outline:0;background:transparent;
+  width:145px;
+  font-size:.85rem;
+  color:var(--tf-ink);
+}
+.tf-search button{
+  border:0;
+  background:var(--tf-deep);
+  color:#fff;
+  border-radius:999px;
+  padding:5px 12px;
+  font-size:.8rem;
+}
+.tf-search button:hover{background:#33584e;}
+.tf-burger{
+  display:none;
+  border:1px solid var(--tf-line);
+  background:#fff;
+  border-radius:10px;
+  width:40px;height:38px;
+  font-size:1.1rem;
+  color:var(--tf-deep);
+}
+.tf-searchmsg{
+  font-size:.78rem;
+  color:var(--tf-green);
+  padding:0 clamp(14px,4vw,44px) 8px;
+  max-width:1240px;
+  margin:0 auto;
+  min-height:0;
+}
+.tf-searchmsg:empty{display:none;}
+
+@media (max-width:920px){
+  .tf-nav{
+    display:none;
+    position:absolute;
+    left:0;right:0;
+    top:100%;
+    background:#fff;
+    flex-direction:column;
+    align-items:stretch;
+    padding:8px 14px 14px;
+    border-bottom:1px solid var(--tf-line);
+    box-shadow:var(--tf-shadow);
+    gap:2px;
+  }
+  .tf-nav.tf-open{display:flex;}
+  .tf-nav a{padding:10px 12px;font-size:.95rem;}
+  .tf-burger{display:grid;place-items:center;}
+  .tf-search input{width:110px;}
+  .tf-header__inner{position:relative;flex-wrap:wrap;}
+}
+
+/* ===== 通用布局 ===== */
+.tf-wrap{max-width:1240px;margin:0 auto;padding:0 clamp(14px,4vw,44px);}
+.tf-section{
+  padding:clamp(38px,6vw,68px) 0;
+  scroll-margin-top:118px;
+}
+.tf-section--alt{background:#fffdf8;border-top:1px solid var(--tf-line);border-bottom:1px solid var(--tf-line);}
+.tf-section--deep{
+  background:linear-gradient(160deg,#1d3a34,#2b4f45 70%,#33584e);
+  color:#f4efe4;
+}
+.tf-section--deep h2, .tf-section--deep h3{color:#fff;}
+.tf-section--deep .tf-lead{color:#cfe0d6;}
+
+.tf-sec-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-bottom:26px;
+}
+.tf-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:.76rem;
+  letter-spacing:3px;
+  font-weight:700;
+  color:var(--tf-green);
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.tf-kicker::before{
+  content:"";
+  width:22px;height:2px;
+  background:var(--tf-amber);
+  border-radius:2px;
+}
+.tf-section--deep .tf-kicker{color:#a9c9b8;}
+.tf-lead{color:var(--tf-muted);max-width:62ch;margin:0;font-size:.96rem;}
+
+/* ===== 按钮 ===== */
+.tf-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:0;
+  border-radius:999px;
+  padding:11px 24px;
+  font-size:.92rem;
+  font-weight:600;
+  transition:transform .18s,box-shadow .18s,background .18s;
+}
+.tf-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(29,58,52,.18);}
+.tf-btn--primary{background:var(--tf-amber);color:#3a2410;}
+.tf-btn--ghost{background:transparent;border:1.5px solid rgba(244,239,228,.6);color:#f4efe4;}
+.tf-btn--ghost:hover{background:rgba(255,255,255,.12);}
+.tf-btn--dark{background:var(--tf-deep);color:#fff;}
+.tf-btn--line{background:#fff;border:1px solid var(--tf-line);color:var(--tf-deep);}
+
+/* ===== 首屏 ===== */
+.tf-hero{
+  position:relative;
+  background:linear-gradient(150deg,#1d3a34 0%,#2a4c43 55%,#3c6558 100%);
+  color:#f6f1e6;
+  overflow:hidden;
+}
+.tf-hero::after{
+  content:"";
+  position:absolute;
+  inset:auto -10% -40% 40%;
+  height:420px;
+  background:radial-gradient(closest-side,rgba(240,163,94,.28),transparent 72%);
+  pointer-events:none;
+}
+.tf-hero__grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:clamp(24px,4vw,54px);
+  align-items:center;
+  padding:clamp(40px,6vw,74px) 0;
+  z-index:1;
+}
+.tf-hero__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(255,214,170,.55);
+  background:rgba(240,163,94,.14);
+  color:#ffd9ad;
+  border-radius:999px;
+  padding:5px 15px;
+  font-size:.78rem;
+  letter-spacing:1px;
+  margin-bottom:16px;
+}
+.tf-hero h1{
+  font-size:clamp(2.3rem,5.2vw,3.7rem);
+  letter-spacing:2px;
+  margin-bottom:12px;
+  color:#fff;
+}
+.tf-hero__tagline{
+  font-size:clamp(1rem,1.7vw,1.2rem);
+  color:#ffe3c2;
+  font-weight:600;
+  margin-bottom:16px;
+  letter-spacing:1px;
+}
+.tf-hero__intro{
+  color:#d6e3db;
+  font-size:.95rem;
+  max-width:56ch;
+  margin-bottom:22px;
+}
+.tf-hero__actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px;}
+.tf-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  max-width:460px;
+}
+.tf-stat{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  padding:12px 14px;
+}
+.tf-stat__num{font-size:1.5rem;font-weight:800;color:var(--tf-amber);line-height:1.2;}
+.tf-stat__label{font-size:.76rem;color:#c4d6cc;letter-spacing:1px;}
+
+.tf-hero__visual{
+  position:relative;
+}
+.tf-hero__frame{
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 26px 60px rgba(0,0,0,.35);
+  border:1px solid rgba(255,255,255,.16);
+}
+.tf-hero__frame svg{display:block;width:100%;height:auto;}
+.tf-hero__chip{
+  position:absolute;
+  background:#fff;
+  color:var(--tf-deep);
+  border-radius:14px;
+  padding:9px 14px;
+  font-size:.78rem;
+  font-weight:700;
+  box-shadow:0 14px 30px rgba(0,0,0,.24);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.tf-hero__chip--a{left:-10px;bottom:26px;}
+.tf-hero__chip--b{right:6px;top:-14px;background:var(--tf-amber);color:#3a2410;}
+.tf-hero__chip span.dot{width:8px;height:8px;border-radius:50%;background:var(--tf-green);}
+@media (max-width:860px){
+  .tf-hero__grid{grid-template-columns:1fr;}
+  .tf-hero__visual{order:-1;}
+  .tf-stats{max-width:none;}
+}
+
+/* ===== 深度解析长文 ===== */
+.tf-about__grid{
+  display:grid;
+  grid-template-columns:230px 1fr;
+  gap:clamp(20px,3.5vw,46px);
+  align-items:start;
+}
+.tf-about__side{
+  position:sticky;
+  top:150px;
+  background:#fff;
+  border:1px solid var(--tf-line);
+  border-radius:var(--tf-radius);
+  padding:20px;
+  box-shadow:var(--tf-shadow);
+}
+.tf-about__side h3{font-size:1rem;margin-bottom:10px;}
+.tf-about__side ul{display:grid;gap:8px;font-size:.86rem;color:var(--tf-muted);}
+.tf-about__side li{display:flex;gap:8px;align-items:flex-start;}
+.tf-about__side li::before{content:"◆";color:var(--tf-amber);font-size:.7rem;margin-top:5px;}
+.tf-prose{columns:2;column-gap:38px;font-size:.95rem;color:#3f4c46;}
+.tf-prose p{break-inside:avoid;margin-bottom:1.1em;}
+.tf-prose p:first-child::first-letter{
+  font-size:2.9em;
+  float:left;
+  line-height:.9;
+  padding:4px 10px 0 0;
+  color:var(--tf-deep);
+  font-weight:800;
+}
+.tf-prose .tf-quote{
+  background:#fff;
+  border-left:4px solid var(--tf-amber);
+  padding:14px 18px;
+  border-radius:0 12px 12px 0;
+  color:var(--tf-deep);
+  font-weight:600;
+  box-shadow:var(--tf-shadow);
+  break-inside:avoid;
+}
+@media (max-width:900px){
+  .tf-about__grid{grid-template-columns:1fr;}
+  .tf-about__side{position:static;}
+  .tf-prose{columns:1;}
+}
+
+/* ===== 焦点视频 ===== */
+.tf-focus__grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:24px;
+}
+.tf-videocard{
+  background:var(--tf-card);
+  border:1px solid var(--tf-line);
+  border-radius:var(--tf-radius);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:transform .22s,box-shadow .22s;
+}
+.tf-videocard:hover{transform:translateY(-4px);box-shadow:var(--tf-shadow);}
+.tf-videocard__cover{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  background:#dfe7e2;
+}
+.tf-videocard__cover svg{width:100%;height:auto;display:block;transition:transform .4s;}
+.tf-videocard:hover .tf-videocard__cover svg{transform:scale(1.045);}
+.tf-tagchip{
+  position:absolute;
+  left:12px;top:12px;
+  background:rgba(29,58,52,.82);
+  color:#ffe6c8;
+  font-size:.72rem;
+  padding:3px 10px;
+  border-radius:999px;
+  letter-spacing:1px;
+  backdrop-filter:blur(4px);
+}
+.tf-duration{
+  position:absolute;
+  right:12px;bottom:12px;
+  background:rgba(0,0,0,.62);
+  color:#fff;
+  font-size:.72rem;
+  border-radius:6px;
+  padding:1px 7px;
+}
+.tf-videocard__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.tf-videocard__title{font-size:1.02rem;font-weight:700;margin:0;color:var(--tf-deep);}
+.tf-videocard--big .tf-videocard__title{font-size:1.24rem;}
+.tf-videocard__desc{font-size:.86rem;color:var(--tf-muted);margin:0;}
+.tf-videocard__meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:.78rem;
+  color:var(--tf-muted);
+  flex-wrap:wrap;
+}
+.tf-avatar{
+  width:26px;height:26px;
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:.72rem;
+  font-weight:700;
+  color:#fff;
+  flex:0 0 auto;
+}
+.tf-cardacts{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:auto;
+  padding-top:10px;
+  border-top:1px dashed var(--tf-line);
+}
+.tf-act{
+  border:0;
+  background:transparent;
+  font-size:.8rem;
+  color:var(--tf-muted);
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 9px;
+  border-radius:8px;
+  transition:background .18s,color .18s;
+}
+.tf-act:hover{background:var(--tf-amber-soft);color:var(--tf-deep);}
+.tf-act.is-liked{color:#c8692a;font-weight:700;}
+.tf-act.is-saved{color:#3c6558;font-weight:700;}
+
+.tf-focus__side{
+  display:grid;
+  grid-template-rows:repeat(2,1fr);
+  gap:20px;
+}
+.tf-mini{
+  display:flex;
+  gap:14px;
+  background:#fff;
+  border:1px solid var(--tf-line);
+  border-radius:var(--tf-radius);
+  overflow:hidden;
+  padding:12px;
+  align-items:center;
+  transition:transform .2s,box-shadow .2s;
+}
+.tf-mini:hover{transform:translateX(4px);box-shadow:var(--tf-shadow);}
+.tf-mini__cover{flex:0 0 132px;border-radius:11px;overflow:hidden;}
+.tf-mini__cover svg{width:100%;height:auto;display:block;}
+.tf-mini__body h3{font-size:.95rem;margin-bottom:4px;}
+.tf-mini__body p{font-size:.79rem;color:var(--tf-muted);margin:0;}
+@media (max-width:900px){
+  .tf-focus__grid{grid-template-columns:1fr;}
+  .tf-focus__side{grid-template-rows:none;grid-template-columns:1fr 1fr;}
+}
+@media (max-width:600px){
+  .tf-focus__side{grid-template-columns:1fr;}
+  .tf-mini__cover{flex-basis:104px;}
+}
+
+/* ===== 专题 ===== */
+.tf-topic__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.tf-topic{
+  background:#fff;
+  border:1px solid var(--tf-line);
+  border-radius:var(--tf-radius);
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  position:relative;
+  overflow:hidden;
+  transition:transform .22s,box-shadow .22s;
+}
+.tf-topic:hover{transform:translateY(-4px);box-shadow:var(--tf-shadow);}
+.tf-topic::before{
+  content:"";
+  position:absolute;
+  right:-40px;top:-40px;
+  width:110px;height:110px;
+  border-radius:50%;
+  background:var(--tf-amber-soft);
+  opacity:.75;
+}
+.tf-topic__state{
+  align-self:flex-start;
+  font-size:.72rem;
+  padding:2px 10px;
+  border-radius:999px;
+  background:#eef4ef;
+  color:var(--tf-green);
+  font-weight:700;
+  position:relative;
+}
+.tf-topic__state--hot{background:#ffe9d3;color:#b4601d;}
+.tf-topic h3{position:relative;margin-bottom:2px;}
+.tf-topic p{font-size:.86rem;color:var(--tf-muted);margin:0;position:relative;}
+.tf-topic__foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.76rem;
+  color:var(--tf-muted);
+  border-top:1px dashed var(--tf-line);
+  padding-top:10px;
+  margin-top:auto;
+  position:relative;
+}
+
+/* ===== 创作者 ===== */
+.tf-creator__grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(232px,1fr));
+  gap:20px;
+}
+.tf-creator{
+  background:#fff;
+  border:1px solid var(--tf-line);
+  border-radius:var(--tf-radius);
+  padding:22px;
+  text-align:center;
+  transition:transform .22s,box-shadow .22s;
+}
+.tf-creator:hover{transform:translateY(-4px);box-shadow:var(--tf-shadow);}
+.tf-creator .tf-avatar{width:62px;height:62px;font-size:1.3rem;margin:0 auto 12px;}
+.tf-creator__name{font-size:1.02rem;font-weight:700;color:var(--tf-deep);margin-bottom:2px;}
+.tf-creator__field{font-size:.78rem;color:var(--tf-green);letter-spacing:1px;margin-bottom:10px;}
+.tf-creator__bio{font-size:.83rem;color:var(--tf-muted);margin-bottom:12px;min-height:3.4em;}
+.tf-creator__nums{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  font-size:.78rem;
+  color:var(--tf-muted);
+  border-top:1px dashed var(--tf-line);
+  padding-top:12px;
+  margin-bottom:12px;
+}
+.tf-creator__nums b{color:var(--tf-deep);font-size:.95rem;display:block;}
+
+/* ===== 影像墙 ===== */
+.tf-wall{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:14px;
+}
+.tf-wall__item{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  border:1px solid var(--tf-line);
+  background:#fff;
+  transition:transform .22s,box-shadow .22s;
+}
+.tf-wall__item:hover{transform:translateY(-3px);box-shadow:var(--tf-shadow);}
+.tf-wall__item svg{width:100%;height:100%;display:block;object-fit:cover;}
+.tf-wall__item figcaption{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  background:linear-gradient(transparent,rgba(20,32,28,.82));
+  color:#fff;
+  font-size:.76rem;
+  padding:22px 10px 8px;
+  line-height:1.4;
+}
+.tf-wall__item--l{grid-column:span 3;aspect-ratio:16/9;}
+.tf-wall__item--m{grid-column:span 2;aspect-ratio:4/3;}
+.tf-wall__item--s{grid-column:span 2;aspect-ratio:1/1;}
+@media (max-width:760px){
+  .tf-wall{grid-template-columns:repeat(2,1fr);}
+  .tf-wall__item--l,.tf-wall__item--m,.tf-wall__item--s{grid-column:span 1;aspect-ratio:4/3;}
+}
+
+/* ===== 评论 ===== */
+.tf-voices{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(268px,1fr));
+  gap:18px;
+}
+.tf-voice{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:var(--tf-radius);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.tf-voice__top{display:flex;align-items:center;gap:10px;}
+.tf-voice__name{font-size:.9rem;font-weight:700;color:#fff;}
+.tf-voice__role{font-size:.74rem;color:#a9c9b8;}
+.tf-voice p{font-size:.88rem;color:#dbe7e0;margin:0;}
+.tf-voice__rate{font-size:.8rem;color:var(--tf-amber);letter-spacing:2px;}
+
+/* ===== FAQ ===== */
+.tf-faq{display:grid;gap:12px;max-width:880px;}
+.tf-faq details{
+  background:#fff;
+  border:1px solid var(--tf-line);
+  border-radius:14px;
+  padding:0 18px;
+  transition:box-shadow .2s;
+}
+.tf-faq details[open]{box-shadow:var(--tf-shadow);}
+.tf-faq summary{
+  cursor:pointer;
+  list-style:none;
+  font-weight:700;
+  font-size:.95rem;
+  padding:15px 26px 15px 0;
+  position:relative;
+  color:var(--tf-deep);
+}
+.tf-faq summary::-webkit-details-marker{display:none;}
+.tf-faq summary::after{
+  content:"+";
+  position:absolute;
+  right:0;top:13px;
+  font-size:1.2rem;
+  color:var(--tf-amber);
+  font-weight:700;
+  transition:transform .2s;
+}
+.tf-faq details[open] summary::after{content:"−";}
+.tf-faq p{font-size:.88rem;color:var(--tf-muted);margin:0 0 15px;}
+
+/* ===== 动态时间线 ===== */
+.tf-news{display:grid;gap:0;border-left:2px solid var(--tf-line);margin-left:8px;}
+.tf-news__item{
+  position:relative;
+  padding:0 0 22px 24px;
+}
+.tf-news__item::before{
+  content:"";
+  position:absolute;
+  left:-7px;top:8px;
+  width:12px;height:12px;
+  border-radius:50%;
+  background:var(--tf-amber);
+  border:2px solid #fffdf8;
+  box-shadow:0 0 0 2px var(--tf-amber-soft);
+}
+.tf-news__date{font-size:.76rem;color:var(--tf-green);letter-spacing:1px;font-weight:700;}
+.tf-news__item h3{font-size:.98rem;margin:3px 0 4px;}
+.tf-news__item p{font-size:.85rem;color:var(--tf-muted);margin:0;}
+
+/* ===== 底部联系/投稿 ===== */
+.tf-join{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:26px;
+  align-items:center;
+}
+.tf-join__panel{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:var(--tf-radius);
+  padding:26px;
+}
+.tf-join__panel h3{color:#fff;}
+.tf-join__list{display:grid;gap:10px;font-size:.88rem;color:#d6e3db;}
+.tf-join__list li{display:flex;gap:9px;}
+.tf-join__list b{color:var(--tf-amber);flex:0 0 auto;}
+@media (max-width:820px){.tf-join{grid-template-columns:1fr;}}
+
+/* ===== 页脚 ===== */
+.tf-footer{
+  background:#16281f;
+  color:#a9bdb1;
+  font-size:.85rem;
+  padding:46px 0 26px;
+}
+.tf-footer__grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:26px;
+  padding-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.tf-footer h4{color:#fff;font-size:.92rem;margin-bottom:12px;letter-spacing:1px;}
+.tf-footer li{margin-bottom:8px;}
+.tf-footer a:hover{color:var(--tf-amber);}
+.tf-footer__brand .tf-brand__name{color:#fff;}
+.tf-footer__brand p{font-size:.83rem;margin-top:10px;max-width:34ch;line-height:1.7;}
+.tf-footer__bottom{
+  padding-top:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  font-size:.78rem;
+  color:#7f978a;
+}
+@media (max-width:820px){
+  .tf-footer__grid{grid-template-columns:1fr 1fr;}
+}
+
+/* ===== 回到顶部 ===== */
+.tf-top{
+  position:fixed;
+  right:20px;bottom:24px;
+  width:46px;height:46px;
+  border-radius:50%;
+  border:0;
+  background:var(--tf-deep);
+  color:#fff;
+  font-size:1.1rem;
+  display:grid;place-items:center;
+  box-shadow:0 12px 26px rgba(29,58,52,.32);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .25s,transform .25s,visibility .25s;
+  z-index:70;
+}
+.tf-top.tf-show{opacity:1;visibility:visible;transform:none;}
+
+/* ===== Toast / 弹窗 ===== */
+.tf-toast{
+  position:fixed;
+  left:50%;bottom:38px;
+  transform:translate(-50%,24px);
+  background:rgba(22,40,31,.94);
+  color:#fff;
+  font-size:.86rem;
+  padding:10px 20px;
+  border-radius:999px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .25s,transform .25s;
+  z-index:120;
+  max-width:86vw;
+  text-align:center;
+}
+.tf-toast.tf-show{opacity:1;transform:translate(-50%,0);}
+
+.tf-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(16,28,23,.6);
+  display:none;
+  place-items:center;
+  z-index:140;
+  padding:20px;
+  backdrop-filter:blur(3px);
+}
+.tf-modal.tf-open{display:grid;}
+.tf-modal__box{
+  background:#fffdf8;
+  border-radius:20px;
+  max-width:460px;
+  width:100%;
+  padding:26px;
+  box-shadow:0 30px 70px rgba(0,0,0,.35);
+  max-height:88vh;
+  overflow:auto;
+}
+.tf-modal__box h3{margin-bottom:6px;color:var(--tf-deep);}
+.tf-modal__box p{font-size:.88rem;color:var(--tf-muted);}
+.tf-modal__field{display:grid;gap:10px;margin:14px 0;}
+.tf-modal__field input,.tf-modal__field textarea{
+  border:1px solid var(--tf-line);
+  border-radius:10px;
+  padding:10px 12px;
+  font-size:.88rem;
+  font-family:inherit;
+  outline:0;
+  background:#fff;
+  color:var(--tf-ink);
+}
+.tf-modal__field input:focus,.tf-modal__field textarea:focus{border-color:var(--tf-green);}
+.tf-modal__acts{display:flex;gap:10px;justify-content:flex-end;margin-top:8px;}
+.tf-modal__close{
+  float:right;
+  border:0;background:transparent;
+  font-size:1.2rem;color:var(--tf-muted);
+  line-height:1;
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="tf-stickywrap">
+  <div class="tf-noticebar">
+    <span class="tf-noticebar__tag">官方发布</span>
+    <div class="tf-noticebar__list">
+      <b>11月18日</b> 冬季企划「围炉记事」开放报名，首轮投稿截止 11月30日 · 新增「创作者成长」专题 6 篇 · 影像挑战赛第 12 期开始投票
+    </div>
+    <a class="tf-noticebar__link" href="#tf-news">查看动态</a>
+  </div>
+
+  <header class="tf-header">
+    <div class="tf-header__inner">
+      <a class="tf-brand" href="#tf-top">
+        <span class="tf-brand__mark">铁</span>
+        <span class="tf-brand__text">
+          <span class="tf-brand__name">铁粉空间</span>
+          <span class="tf-brand__slogan">TIE FAN SPACE</span>
+        </span>
+      </a>
+      <nav class="tf-nav" id="tf-nav">
+        <a href="#tf-top">首页</a>
+        <a href="#tf-focus">焦点内容</a>
+        <a href="#tf-topic">专题企划</a>
+        <a href="#tf-creator">创作者</a>
+        <a href="#tf-wall">影像墙</a>
+        <a href="#tf-news">企业动态</a>
+        <a href="#tf-faq">帮助</a>
+        <a href="#tf-join">联系投稿</a>
+      </nav>
+      <div class="tf-header__tools">
+        <form class="tf-search" id="tf-search" role="search" onsubmit="return false;">
+          <input id="tf-search-input" type="search" placeholder="搜索内容 / 创作者" aria-label="站内搜索">
+          <button type="submit">搜索</button>
+        </form>
+        <button class="tf-burger" id="tf-burger" aria-label="展开导航" aria-expanded="false">☰</button>
+      </div>
+    </div>
+    <div class="tf-searchmsg" id="tf-searchmsg" aria-live="polite"></div>
+  </header>
+</div>
+
+<main id="tf-top">
+
+  <!-- 首屏 -->
+  <section class="tf-hero">
+    <div class="tf-wrap">
+      <div class="tf-hero__grid">
+        <div>
+          <span class="tf-hero__badge">品牌官方网站 · 持续运营第七年</span>
+          <h1>铁粉空间</h1>
+          <p class="tf-hero__tagline">把热爱拍下来，让同好找到你</p>
+          <p class="tf-hero__intro">
+            铁粉空间是一家专注真实生活记录的原创视频品牌。我们相信，最动人的影像来自普通人的日常：一次认真做的晚饭、一段走了很多遍的街道、一个坚持了三年的小爱好。作为深耕生活影像垂直领域的平台，我们希望为创作者与企业搭建高品质内容生态，用高清画面与真实表达，让每一份热爱都被看见。
+          </p>
+          <div class="tf-hero__actions">
+            <a class="tf-btn tf-btn--primary" href="#tf-focus">浏览焦点内容</a>
+            <a class="tf-btn tf-btn--ghost" href="#tf-creator">认识创作者</a>
+            <button class="tf-btn tf-btn--ghost" type="button" data-tf-open="submit">投稿入口</button>
+          </div>
+          <div class="tf-stats">
+            <div class="tf-stat">
+              <div class="tf-stat__num" data-tf-count="18200">18,200+</div>
+              <div class="tf-stat__label">原创影像作品</div>
+            </div>
+            <div class="tf-stat">
+              <div class="tf-stat__num" data-tf-count="630">630+</div>
+              <div class="tf-stat__label">入驻创作者</div>
+            </div>
+            <div class="tf-stat">
+              <div class="tf-stat__num" data-tf-count="96">96%</div>
+              <div class="tf-stat__label">用户口碑好评率</div>
+            </div>
+          </div>
+        </div>
+        <div class="tf-hero__visual">
+          <div class="tf-hero__frame">
+            <svg viewBox="0 0 640 400" role="img" aria-label="铁粉空间品牌主视觉：暖色调工作台与摄像机的插画">
+              <defs>
+                <linearGradient id="tfhA" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#f6d7ac"/>
+                  <stop offset="1" stop-color="#e0a469"/>
+                </linearGradient>
+                <linearGradient id="tfhB" x1="0" y1="1" x2="1" y2="0">
+                  <stop offset="0" stop-color="#3c6558"/>
+                  <stop offset="1" stop-color="#24403a"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="400" fill="url(#tfhA)"/>
+              <circle cx="512" cy="86" r="62" fill="#ffe9cc" opacity=".85"/>
+              <rect x="0" y="272" width="640" height="128" fill="url(#tfhB)"/>
+              <rect x="70" y="150" width="196" height="132" rx="12" fill="#fdf6ea" opacity=".92"/>
+              <rect x="86" y="168" width="164" height="86" rx="6" fill="#8fb3a1"/>
+              <rect x="106" y="186" width="52" height="50" rx="4" fill="#f0a35e"/>
+              <rect x="168" y="186" width="64" height="10" rx="5" fill="#24403a" opacity=".55"/>
+              <rect x="168" y="206" width="52" height="10" rx="5" fill="#24403a" opacity=".34"/>
+              <rect x="168" y="226" width="60" height="8" rx="4" fill="#24403a" opacity=".24"/>
+              <rect x="86" y="262" width="164" height="8" rx="4" fill="#24403a" opacity=".2"/>
+              <g transform="translate(352 138)">
+                <rect x="0" y="34" width="146" height="96" rx="14" fill="#2c4a41"/>
+                <circle cx="72" cy="82" r="34" fill="#16281f"/>
+                <circle cx="72" cy="82" r="22" fill="#f0a35e"/>
+                <circle cx="72" cy="82" r="9" fill="#16281f"/>
+                <rect x="42" y="8" width="62" height="30" rx="8" fill="#3c6558"/>
+                <rect x="146" y="58" width="34" height="48" rx="8" fill="#3c6558"/>
+                <circle cx="30" cy="52" r="6" fill="#ffd9ad"/>
+              </g>
+              <rect x="330" y="290" width="220" height="14" rx="7" fill="#f0a35e" opacity=".9"/>
+              <rect x="352" y="316" width="176" height="9" rx="4.5" fill="#fdf6ea" opacity=".35"/>
+              <circle cx="88" cy="52" r="16" fill="#3c6558" opacity=".7"/>
+              <circle cx="122" cy="38" r="9" fill="#24403a" opacity=".55"/>
+              <rect x="470" y="180" width="10" height="94" rx="5" fill="#d98b4a" opacity=".8"/>
+              <circle cx="475" cy="170" r="22" fill="#ffd9ad" opacity=".9"/>
+            </svg>
+          </div>
+          <div class="tf-hero__chip tf-hero__chip--a"><span class="dot"></span>本周新增 214 条原创影像</div>
+          <div class="tf-hero__chip tf-hero__chip--b">官方正版 · 高清画质</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="tf-section" id="tf-about">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">About Tiefanspace</span>
+          <h2>关于铁粉空间：一个为长期热爱而建的视频社区</h2>
+          <p class="tf-lead">我们不是流量的比赛场，而是热爱的根据地。以下内容完整讲述这个品牌的定位、理念与运营方式。</p>
+        </div>
+      </div>
+      <div class="tf-about__grid">
+        <aside class="tf-about__side">
+          <h3>快速了解</h3>
+          <ul>
+            <li>2019 年成立，持续运营第七年</li>
+            <li>生活影像垂直领域平台</li>
+            <li>原创内容占比 92%</li>
+            <li>官方审核与正版授权并行</li>
+            <li>创作者成长计划长期开放</li>
+            <li>企业社会责任：乡村影像教室</li>
+          </ul>
+        </aside>
+        <div class="tf-prose">
+          <p>「铁粉空间」这个名字，最初来自一位用户的自嘲——他说自己喜欢拍街边的小店、老楼下的修鞋摊、凌晨还亮着灯的馄饨铺，拍了六年，只有一小群铁粉愿意每条都看完。我们把这个词接过来，做成了一家视频品牌：一个专门给长期主义爱好者留位置的地方。</p>
+          <p>作为一个以真实记录为核心的视频平台，铁粉空间与常见的短视频产品有着明确的定位差异。我们不追求单条内容的瞬时爆发，而是关注一个人在某个领域里能持续输出多久。平台的内容生态由三条主线构成：日常记录、经验分享与人物访谈。日常记录承接生活的颗粒度，经验分享沉淀可复用的方法，人物访谈则把镜头对准那些把一件小事做了很多年的人。</p>
+          <p>在内容品质上，铁粉空间坚持官方审核与正版授权并行。上传的作品需要经过内容合规与画质双重校验，高清是基础门槛而非加分项。对于使用他人素材的创作，平台要求明确标注来源与授权情况；对于原创者，我们提供原创认证标识与优先推荐位，让认真做内容的人得到应有的曝光。</p>
+          <p class="tf-quote">品牌使命：让每一份长期热爱，都能在铁粉空间找到一个稳定的坐标。</p>
+          <p>从数据上看，平台目前沉淀了超过一万八千条原创影像，覆盖三十多个生活细分方向，入驻创作者六百余位。他们中有职业摄影师，也有每天下班后剪片的上班族；有在县城开小店的店主，也有退休后开始学拍的阿姨。铁粉空间并不试图把所有内容统一成一种风格，多元与包容是这个社区能持续生长的前提。</p>
+          <p>我们同样重视企业级的能力建设。品牌与企业可以通过官方合作通道，发起共创企划、产品故事片征集或员工影像工作坊。过去几年，铁粉空间与家居、咖啡、户外、图书等行业的伙伴共同完成了二十余个品牌企划，这些合作并不是简单的广告投放，而是让真实用户以真实体验参与讲述，最终形成可被长期检索的精品内容。</p>
+          <p>在社区运营层面，铁粉空间设置了明确的互动规则：点赞与收藏是轻量表达，评论需要遵守友善原则，举报通道二十四小时响应。我们希望这个空间里的每一次对话，都是因为内容本身值得讨论，而不是因为情绪需要出口。用户至上是我们的运营底线，也是这个品牌能够被称作「用户首选」的原因。</p>
+          <p>面向未来，铁粉空间会继续在垂直领域深耕：一方面完善创作者成长体系，提供脚本灵感、剪辑思路、标题建议等实用工具；另一方面推进线下影像教室与青年创作扶持计划，把镜头交给更多还没有被看见的人。我们相信，真正的品牌影响力不是被多少人知道，而是有多少人愿意在这里留下第二十条、第五十条、第一百条作品。</p>
+          <p>如果你也有一件坚持了很久的小事，欢迎把它拍下来。铁粉空间的首页永远为真实的生活留着一块位置——这也是这个品牌官网最想传达的一句话。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="tf-section tf-section--alt" id="tf-focus">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Featured</span>
+          <h2>焦点内容：本周值得完整看完的影像</h2>
+          <p class="tf-lead">由编辑团队与社区共同推荐，兼顾故事性与方法性，适合慢慢看。</p>
+        </div>
+        <a class="tf-btn tf-btn--line" href="#tf-wall">进入影像墙</a>
+      </div>
+
+      <div class="tf-focus__grid">
+        <article class="tf-videocard tf-videocard--big">
+          <a class="tf-videocard__cover" href="#tf-focus" aria-label="观看焦点内容：在城中村开一家修表铺的第十一年">
+            <svg viewBox="0 0 640 360" role="img" aria-label="修表铺工作台特写插画，暖黄色灯光下的钟表零件">
+              <defs>
+                <linearGradient id="tff1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#3c6558"/>
+                  <stop offset="1" stop-color="#1d3a34"/>
+                </linearGradient>
+              </defs>
+              <rect width="640" height="360" fill="url(#tff1)"/>
+              <circle cx="500" cy="86" r="70" fill="#f0a35e" opacity=".22"/>
+              <rect x="60" y="220" width="520" height="14" rx="7" fill="#8a6a4a"/>
+              <rect x="60" y="234" width="520" height="90" fill="#6b5138"/>
+              <circle cx="188" cy="180" r="62" fill="#fdf6ea"/>
+              <circle cx="188" cy="180" r="52" fill="#e9dcc4"/>
+              <circle cx="188" cy="180" r="46" fill="#fffdf6"/>
+              <line x1="188" y1="180" x2="188" y2="146" stroke="#24403a" stroke-width="4" stroke-linecap="round"/>
+              <line x1="188" y1="180" x2="214" y2="194" stroke="#c8692a" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="188" cy="180" r="4" fill="#24403a"/>
+              <rect x="300" y="152" width="86" height="70" rx="8" fill="#f0a35e"/>
+              <circle cx="343" cy="187" r="19" fill="#24403a"/>
+              <circle cx="343" cy="187" r="8" fill="#ffd9ad"/>
+              <rect x="414" y="164" width="94" height="58" rx="8" fill="#5f8b6f"/>
+              <rect x="428" y="178" width="66" height="8" rx="4" fill="#dfeee5" opacity=".8"/>
+              <rect x="428" y="194" width="44" height="8" rx="4" fill="#dfeee5" opacity=".5"/>
+              <circle cx="110" cy="120" r="16" fill="none" stroke="#ffd9ad" stroke-width="3" opacity=".7"/>
+              <circle cx="556" cy="150" r="24" fill="none" stroke="#f0a35e" stroke-width="3" opacity=".55"/>
+              <circle cx="500" cy="270" r="10" fill="#ffd9ad" opacity=".75"/>
+              <circle cx="150" cy="288" r="7" fill="#f0a35e" opacity=".7"/>
+            </svg>
+            <span class="tf-tagchip">人物访谈</span>
+            <span class="tf-duration">18:24</span>
+          </a>
+          <div class="tf-videocard__body">
+            <h3 class="tf-videocard__title">在城中村开一家修表铺的第十一年</h3>
+            <p class="tf-videocard__desc">陈师傅的铺子只有四平方米，墙上挂着三百多只待修的表。他说，修表这件事急不得，就像过日子一样。这条片子拍了三个周末，记录他一天里最安静的时刻。</p>
+            <div class="tf-videocard__meta">
+              <span class="tf-avatar" style="background:#5f8b6f">阿</span>
+              <span>阿岚影像志</span>
+              <span>·</span>
+              <span>11月16日发布</span>
+              <span>·</span>
+              <span>原创 · 高清</span>
+            </div>
+            <div class="tf-cardacts">
+              <button class="tf-act" type="button" data-tf-like>♡ <span>2,164</span></button>
+              <button class="tf-act" type="button" data-tf-save>☆ 收藏</button>
+              <button class="tf-act" type="button" data-tf-comment>💬 评论</button>
+              <button class="tf-act" type="button" data-tf-copy>↗ 分享</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="tf-focus__side">
+          <article class="tf-mini">
+            <a class="tf-mini__cover" href="#tf-focus" aria-label="观看：一顿晚饭的十七个步骤">
+              <svg viewBox="0 0 320 180" role="img" aria-label="厨房灶台与锅具的插画，琥珀色暖光">
+                <rect width="320" height="180" fill="#f2d9b6"/>
+                <rect x="0" y="118" width="320" height="62" fill="#8a6a4a"/>
+                <rect x="28" y="128" width="264" height="14" rx="7" fill="#c9a578"/>
+                <circle cx="112" cy="96" r="40" fill="#3c6558"/>
+                <circle cx="112" cy="96" r="30" fill="#2c4a41"/>
+                <rect x="86" y="128" width="52" height="10" rx="5" fill="#24403a"/>
+                <circle cx="216" cy="86" r="26" fill="#e08a4a"/>
+                <circle cx="216" cy="86" r="16" fill="#f7c48d"/>
+                <path d="M258 118 q14 -30 32 -22 q-4 22 -32 22z" fill="#5f8b6f"/>
+                <circle cx="52" cy="44" r="12" fill="#ffd9ad" opacity=".8"/>
+              </svg>
+            </a>
+            <div class="tf-mini__body">
+              <h3>一顿晚饭的十七个步骤</h3>
+              <p>美食烹饪 · 一次把备菜流程讲清楚</p>
+            </div>
+          </article>
+          <article class="tf-mini">
+            <a class="tf-mini__cover" href="#tf-focus" aria-label="观看：凌晨四点的菜市场，和它熟悉的脸">
+              <svg viewBox="0 0 320 180" role="img" aria-label="清晨菜市场遮阳棚与灯串的插画，冷蓝调">
+                <rect width="320" height="180" fill="#26394a"/>
+                <rect x="0" y="130" width="320" height="50" fill="#1a2733"/>
+                <path d="M0 70 L80 30 L160 70 L240 30 L320 70 L320 96 L0 96 Z" fill="#5f8b6f" opacity=".85"/>
+                <circle cx="62" cy="112" r="6" fill="#ffd9ad"/>
+                <circle cx="118" cy="112" r="6" fill="#ffd9ad"/>
+                <circle cx="174" cy="112" r="6" fill="#ffd9ad"/>
+                <circle cx="230" cy="112" r="6" fill="#ffd9ad"/>
+                <circle cx="286" cy="112" r="6" fill="#ffd9ad"/>
+                <rect x="40" y="136" width="70" height="30" rx="5" fill="#c9a578"/>
+                <rect x="130" y="140" width="60" height="26" rx="5" fill="#3c6558"/>
+                <rect x="210" y="134" width="76" height="32" rx="5" fill="#8a6a4a"/>
+              </svg>
+            </a>
+            <div class="tf-mini__body">
+              <h3>凌晨四点的菜市场，和它熟悉的脸</h3>
+              <p>城市探索 · 关于一座城市的清晨</p>
+            </div>
+          </article>
+          <article class="tf-mini">
+            <a class="tf-mini__cover" href="#tf-focus" aria-label="观看：我用三个月学会给木头上油">
+              <svg viewBox="0 0 320 180" role="img" aria-label="木工坊里刨花与木料的插画，木质暖调">
+                <rect width="320" height="180" fill="#d8b98e"/>
+                <rect x="0" y="120" width="320" height="60" fill="#a9885f"/>
+                <rect x="40" y="88" width="150" height="32" rx="5" fill="#8a6a4a"/>
+                <rect x="40" y="70" width="150" height="18" rx="4" fill="#b08e63"/>
+                <path d="M210 120 q20 -34 48 -30 q6 26 -26 30z" fill="#6b5138"/>
+                <path d="M246 120 q16 -20 34 -16 q0 18 -22 16z" fill="#8a6a4a"/>
+                <circle cx="88" cy="46" r="18" fill="none" stroke="#6b5138" stroke-width="4"/>
+                <rect x="264" y="60" width="8" height="60" rx="4" fill="#5b432c"/>
+              </svg>
+            </a>
+            <div class="tf-mini__body">
+              <h3>我用三个月学会给木头上油</h3>
+              <p>手作 DIY · 失败四次后的经验总结</p>
+            </div>
+          </article>
+          <article class="tf-mini">
+            <a class="tf-mini__cover" href="#tf-focus" aria-label="观看：深夜便利店的值班记事">
+              <svg viewBox="0 0 320 180" role="img" aria-label="深夜便利店灯光与货架的插画，冷绿与暖黄对比">
+                <rect width="320" height="180" fill="#1c2b25"/>
+                <rect x="0" y="132" width="320" height="48" fill="#141f1a"/>
+                <rect x="34" y="44" width="252" height="88" rx="6" fill="#f0a35e" opacity=".9"/>
+                <rect x="52" y="62" width="86" height="54" rx="4" fill="#3c6558"/>
+                <rect x="152" y="62" width="60" height="24" rx="4" fill="#24403a"/>
+                <rect x="152" y="92" width="60" height="24" rx="4" fill="#24403a"/>
+                <rect x="224" y="62" width="46" height="54" rx="4" fill="#5f8b6f"/>
+                <circle cx="282" cy="34" r="14" fill="#ffd9ad" opacity=".8"/>
+                <rect x="24" y="132" width="272" height="8" rx="4" fill="#f0a35e" opacity=".5"/>
+              </svg>
+            </a>
+            <div class="tf-mini__body">
+              <h3>深夜便利店的值班记事</h3>
+              <p>日常记录 · 一个人守店的六个小时</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section class="tf-section" id="tf-topic">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Projects</span>
+          <h2>专题企划：把零散的记录收拢成一条线</h2>
+          <p class="tf-lead">每个专题持续更新，欢迎围观，也欢迎带着自己的作品参与共创。</p>
+        </div>
+      </div>
+      <div class="tf-topic__grid">
+        <article class="tf-topic">
+          <span class="tf-topic__state tf-topic__state--hot">招募中</span>
+          <h3>围炉记事 · 冬季影像企划</h3>
+          <p>拍一条关于「冬天里最暖的一件小事」的影像。可以是火锅、毛线、热水袋，也可以是某个人的一句话。首届冬季企划，入选作品将获得官方推荐位。</p>
+          <div class="tf-topic__foot"><span>已投稿 316 条</span><span>11月30日截止</span></div>
+        </article>
+        <article class="tf-topic">
+          <span class="tf-topic__state">更新至第 12 期</span>
+          <h3>一件小事做十年</h3>
+          <p>聚焦长期主义的系列访谈：修表师傅、旧书店店主、跑了八年同一条路线的公交司机。我们想知道，时间到底给坚持的人留下了什么。</p>
+          <div class="tf-topic__foot"><span>12 支正片</span><span>每周三更新</span></div>
+        </article>
+        <article class="tf-topic">
+          <span class="tf-topic__state">报名进行中</span>
+          <h3>新人影像挑战赛</h3>
+          <p>面向第一次拍片的朋友，主题开放：只要三分钟，讲清楚一个你真正在意的东西。平台提供选题建议与剪辑模板，让创意不用卡在设备上。</p>
+          <div class="tf-topic__foot"><span>788 人报名</span><span>投票进行中</span></div>
+        </article>
+        <article class="tf-topic">
+          <span class="tf-topic__state">长期企划</span>
+          <h3>我家附近三百米</h3>
+          <p>不走远方，只拍住处周围三百米。菜店、理发店、修车摊、小公园，用镜头重新认识已经住了很多年的地方。这是社区参与度最高的常设企划。</p>
+          <div class="tf-topic__foot"><span>累计 1,942 条</span><span>长期开放</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="tf-section tf-section--alt" id="tf-creator">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Creators</span>
+          <h2>创作者矩阵：六百三十位长期主义者</h2>
+          <p class="tf-lead">他们不追热点，只拍自己真正关心的东西。点击卡片可查看作者信息。</p>
+        </div>
+      </div>
+      <div class="tf-creator__grid">
+        <article class="tf-creator" data-tf-author="阿岚|人物访谈与城市纪实|6 年记录者，擅长把镜头交给被拍的人|128 部作品|4.2 万粉丝">
+          <span class="tf-avatar" style="background:#5f8b6f">阿</span>
+          <div class="tf-creator__name">阿岚</div>
+          <div class="tf-creator__field">人物访谈 · 城市纪实</div>
+          <p class="tf-creator__bio">6 年记录者，擅长把镜头交给被拍的人，让他们自己讲完一个故事。</p>
+          <div class="tf-creator__nums">
+            <span><b>128</b>作品</span>
+            <span><b>4.2万</b>粉丝</span>
+          </div>
+          <button class="tf-btn tf-btn--line" type="button" data-tf-authorbtn>作者信息</button>
+        </article>
+        <article class="tf-creator" data-tf-author="林小满|美食烹饪与家常菜|把一日三餐拍成连续剧的上班族|86 部作品|3.1 万粉丝">
+          <span class="tf-avatar" style="background:#e08a4a">林</span>
+          <div class="tf-creator__name">林小满</div>
+          <div class="tf-creator__field">美食烹饪 · 家常菜</div>
+          <p class="tf-creator__bio">把一日三餐拍成连续剧的上班族，相信好好吃饭是最低成本的治愈。</p>
+          <div class="tf-creator__nums">
+            <span><b>86</b>作品</span>
+            <span><b>3.1万</b>粉丝</span>
+          </div>
+          <button class="tf-btn tf-btn--line" type="button" data-tf-authorbtn>作者信息</button>
+        </article>
+        <article class="tf-creator" data-tf-author="老周不赶路|户外活动与徒步|退休后开始拍片的背包客，路线都自己走过|54 部作品|2.6 万粉丝">
+          <span class="tf-avatar" style="background:#3c6558">周</span>
+          <div class="tf-creator__name">老周不赶路</div>
+          <div class="tf-creator__field">户外活动 · 徒步</div>
+          <p class="tf-creator__bio">退休后开始拍片的背包客，每条路线都自己走过两遍才拍。</p>
+          <div class="tf-creator__nums">
+            <span><b>54</b>作品</span>
+            <span><b>2.6万</b>粉丝</span>
+          </div>
+          <button class="tf-btn tf-btn--line" type="button" data-tf-authorbtn>作者信息</button>
+        </article>
+        <article class="tf-creator" data-tf-author="木木手作|手作 DIY 与木工|从零学木工的会计，第四年终于做出第一把椅子|73 部作品|1.9 万粉丝">
+          <span class="tf-avatar" style="background:#8a6a4a">木</span>
+          <div class="tf-creator__name">木木手作</div>
+          <div class="tf-creator__field">手作 DIY · 木工</div>
+          <p class="tf-creator__bio">从零学木工的会计，第四年终于做出第一把椅子，过程全拍下来了。</p>
+          <div class="tf-creator__nums">
+            <span><b>73</b>作品</span>
+            <span><b>1.9万</b>粉丝</span>
+          </div>
+          <button class="tf-btn tf-btn--line" type="button" data-tf-authorbtn>作者信息</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影像墙 -->
+  <section class="tf-section" id="tf-wall">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Gallery</span>
+          <h2>影像墙：社区里正在被记录的日常</h2>
+          <p class="tf-lead">来自不同城市的投稿，尺寸不同，生活的质地也不同。</p>
+        </div>
+        <button class="tf-btn tf-btn--dark" type="button" data-tf-open="submit">上传我的作品</button>
+      </div>
+      <div class="tf-wall">
+        <figure class="tf-wall__item tf-wall__item--l">
+          <svg viewBox="0 0 480 270" role="img" aria-label="傍晚河边长椅与散步的人影插画">
+            <rect width="480" height="270" fill="#f3cfa0"/>
+            <circle cx="360" cy="80" r="46" fill="#f0884a" opacity=".85"/>
+            <rect x="0" y="176" width="480" height="94" fill="#5f8b6f"/>
+            <rect x="0" y="202" width="480" height="68" fill="#3c6558"/>
+            <rect x="70" y="160" width="120" height="12" rx="6" fill="#8a6a4a"/>
+            <rect x="84" y="172" width="8" height="34" fill="#6b5138"/>
+            <rect x="168" y="172" width="8" height="34" fill="#6b5138"/>
+            <circle cx="112" cy="150" r="11" fill="#24403a"/>
+            <circle cx="150" cy="152" r="9" fill="#24403a"/>
+            <rect x="300" y="150" width="56" height="52" rx="5" fill="#e08a4a"/>
+            <path d="M240 202 q30 -26 60 0" stroke="#f0a35e" stroke-width="4" fill="none"/>
+            <circle cx="46" cy="60" r="8" fill="#fffdf6" opacity=".7"/>
+          </svg>
+          <figcaption>傍晚六点的河堤，长椅上总有人</figcaption>
+        </figure>
+        <figure class="tf-wall__item tf-wall__item--m">
+          <svg viewBox="0 0 320 240" role="img" aria-label="窗台多肉植物与手冲咖啡器具插画">
+            <rect width="320" height="240" fill="#dfe9e2"/>
+            <rect x="0" y="168" width="320" height="72" fill="#c9a578"/>
+            <rect x="34" y="98" width="64" height="70" rx="6" fill="#fdf6ea"/>
+            <path d="M66 98 q-16 -34 4 -46 q22 14 4 46z" fill="#5f8b6f"/>
+            <path d="M66 106 q-30 -8 -32 -30 q26 -4 32 30z" fill="#7fa98b"/>
+            <rect x="130" y="120" width="58" height="48" rx="6" fill="#3c6558"/>
+            <path d="M188 132 q22 4 22 18 q-22 4 -22 -18z" fill="#8a6a4a"/>
+            <circle cx="158" cy="112" r="10" fill="#f0a35e"/>
+            <rect x="230" y="112" width="54" height="56" rx="8" fill="#fff" opacity=".8"/>
+            <rect x="242" y="128" width="30" height="6" rx="3" fill="#5f8b6f"/>
+            <rect x="242" y="142" width="22" height="6" rx="3" fill="#8a6a4a"/>
+          </svg>
+          <figcaption>窗台第三盆，终于养活了</figcaption>
+        </figure>
+        <figure class="tf-wall__item tf-wall__item--s">
+          <svg viewBox="0 0 240 240" role="img" aria-label="地铁站夜间通道与指示灯的插画">
+            <rect width="240" height="240" fill="#1f2f3b"/>
+            <rect x="0" y="150" width="240" height="90" fill="#16222b"/>
+            <path d="M0 150 L120 60 L240 150 Z" fill="#2c4a41" opacity=".7"/>
+            <rect x="30" y="120" width="50" height="30" rx="4" fill="#f0a35e"/>
+            <rect x="100" y="120" width="50" height="30" rx="4" fill="#3c6558"/>
+            <rect x="170" y="120" width="40" height="30" rx="4" fill="#5f8b6f"/>
+            <circle cx="120" cy="40" r="10" fill="#ffd9ad" opacity=".8"/>
+            <rect x="20" y="160" width="200" height="6" rx="3" fill="#f0a35e" opacity=".45"/>
+          </svg>
+          <figcaption>末班车前的通道</figcaption>
+        </figure>
+        <figure class="tf-wall__item tf-wall__item--s">
+          <svg viewBox="0 0 240 240" role="img" aria-label="雨天自行车与积水倒影的插画">
+            <rect width="240" height="240" fill="#a9c1c9"/>
+            <rect x="0" y="168" width="240" height="72" fill="#7c9aa3"/>
+            <circle cx="78" cy="152" r="34" fill="none" stroke="#24403a" stroke-width="6"/>
+            <circle cx="166" cy="152" r="34" fill="none" stroke="#24403a" stroke-width="6"/>
+            <path d="M78 152 L108 110 L142 152 M108 110 L166 152" stroke="#24403a" stroke-width="6" fill="none"/>
+            <path d="M96 100 L124 100" stroke="#24403a" stroke-width="6"/>
+            <ellipse cx="120" cy="200" rx="90" ry="10" fill="#dfeef1" opacity=".4"/>
+            <path d="M30 40 l-6 16 M70 26 l-6 16 M110 44 l-6 16 M150 30 l-6 16 M190 46 l-6 16" stroke="#eaf4f6" stroke-width="3" opacity=".7"/>
+          </svg>
+          <figcaption>雨停之前，先骑一段</figcaption>
+        </figure>
+        <figure class="tf-wall__item tf-wall__item--m">
+          <svg viewBox="0 0 320 240" role="img" aria-label="深夜书桌台灯与翻开书页的插画">
+            <rect width="320" height="240" fill="#2a3b34"/>
+            <rect x="0" y="176" width="320" height="64" fill="#7a5c3f"/>
+            <path d="M214 60 q30 0 46 34 l-70 22 q-6 -46 24 -56z" fill="#f0a35e"/>
+            <rect x="196" y="116" width="8" height="60" fill="#c9a578"/>
+            <rect x="170" y="176" width="60" height="8" rx="4" fill="#8a6a4a"/>
+            <path d="M70 150 q40 -14 80 0 l0 26 q-40 -14 -80 0z" fill="#fdf6ea"/>
+            <path d="M150 150 q40 -14 80 0 l0 26 q-40 -14 -80 0z" fill="#e9dcc4"/>
+            <rect x="40" y="190" width="60" height="8" rx="4" fill="#f0a35e" opacity=".45"/>
+          </svg>
+          <figcaption>十一点半，还差两页</figcaption>
+        </figure>
+        <figure class="tf-wall__item tf-wall__item--l">
+          <svg viewBox="0 0 480 270" role="img" aria-label="清晨面包店出炉与陈列的插画">
+            <rect width="480" height="270" fill="#f6e2c6"/>
+            <rect x="0" y="190" width="480" height="80" fill="#b08656"/>
+            <rect x="40" y="80" width="180" height="110" rx="8" fill="#8a6a4a"/>
+            <rect x="56" y="96" width="148" height="36" rx="6" fill="#fdf6ea"/>
+            <ellipse cx="98" cy="150" rx="26" ry="16" fill="#e0a469"/>
+            <ellipse cx="170" cy="150" rx="26" ry="16" fill="#c98a4a"/>
+            <rect x="270" y="96" width="150" height="94" rx="8" fill="#fdf6ea"/>
+            <circle cx="316" cy="140" r="22" fill="#f0a35e"/>
+            <circle cx="368" cy="140" r="22" fill="#e08a4a"/>
+            <rect x="40" y="190" width="400" height="14" rx="7" fill="#6b5138"/>
+            <circle cx="250" cy="46" r="16" fill="#ffd9ad"/>
+          </svg>
+          <figcaption>第一炉面包，六点二十</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="tf-section tf-section--deep" id="tf-voices">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Voices</span>
+          <h2>他们这样评价铁粉空间</h2>
+          <p class="tf-lead">来自创作者与长期用户的真实反馈，语气不同，但都在说同一件事。</p>
+        </div>
+      </div>
+      <div class="tf-voices">
+        <article class="tf-voice">
+          <div class="tf-voice__top">
+            <span class="tf-avatar" style="background:#e08a4a">许</span>
+            <div><div class="tf-voice__name">许一南</div><div class="tf-voice__role">入驻两年 · 家常菜</div></div>
+          </div>
+          <div class="tf-voice__rate">★★★★★</div>
+          <p>我在这里发了八十多道菜，最感动的是有人真的照着做，还回来贴图。这里的人愿意慢慢看，这在现在的平台里太难得了。</p>
+        </article>
+        <article class="tf-voice">
+          <div class="tf-voice__top">
+            <span class="tf-avatar" style="background:#5f8b6f">程</span>
+            <div><div class="tf-voice__name">程默</div><div class="tf-voice__role">普通用户 · 订阅 34 位作者</div></div>
+          </div>
+          <div class="tf-voice__rate">★★★★☆</div>
+          <p>界面不算花哨，但真的很适合晚上看。我一般睡前刷两条，看完心里挺安静的。希望之后能加个「稍后看」的批量管理。</p>
+        </article>
+        <article class="tf-voice">
+          <div class="tf-voice__top">
+            <span class="tf-avatar" style="background:#3c6558">周</span>
+            <div><div class="tf-voice__name">老周不赶路</div><div class="tf-voice__role">创作者 · 徒步</div></div>
+          </div>
+          <div class="tf-voice__rate">★★★★★</div>
+          <p>六十岁开始学剪辑，编辑同学给我改过一次字幕，很耐心。现在我每条片子发出去都有人问路线，这种交流特别实在。</p>
+        </article>
+        <article class="tf-voice">
+          <div class="tf-voice__top">
+            <span class="tf-avatar" style="background:#8a6a4a">梁</span>
+            <div><div class="tf-voice__name">梁小舟</div><div class="tf-voice__role">品牌合作方 · 家居行业</div></div>
+          </div>
+          <div class="tf-voice__rate">★★★★★</div>
+          <p>和铁粉空间做过一次企划，他们没有要求作者改口播稿，而是让真实体验先发生。传播数据不是最高的，但内容留得住。</p>
+        </article>
+        <article class="tf-voice">
+          <div class="tf-voice__top">
+            <span class="tf-avatar" style="background:#c8692a">简</span>
+            <div><div class="tf-voice__name">简宁</div><div class="tf-voice__role">普通用户 · 关注城市纪实</div></div>
+          </div>
+          <div class="tf-voice__rate">★★★★☆</div>
+          <p>我因为这里的一支片子，专门去了一趟片中出现的旧书店。这种感觉很奇妙，好像内容和生活是接得上的。</p>
+        </article>
+        <article class="tf-voice">
+          <div class="tf-voice__top">
+            <span class="tf-avatar" style="background:#5f8b6f">苏</span>
+            <div><div class="tf-voice__name">苏木</div><div class="tf-voice__role">新手创作者 · 入站 4 个月</div></div>
+          </div>
+          <div class="tf-voice__rate">★★★★★</div>
+          <p>第一次投稿就被放进了专题，虽然播放不多，但收到七条很认真的评论。对新人来说，这比什么数据都重要。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 企业动态 -->
+  <section class="tf-section tf-section--alt" id="tf-news">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Updates</span>
+          <h2>企业动态与官方发布</h2>
+          <p class="tf-lead">平台规则、企划进度与线下活动的公开记录，保持透明。</p>
+        </div>
+      </div>
+      <div class="tf-news">
+        <div class="tf-news__item">
+          <div class="tf-news__date">2026 — 11 — 18</div>
+          <h3>冬季企划「围炉记事」正式开放报名</h3>
+          <p>本次活动面向所有注册创作者，题材不限形式不限，单条时长建议 3 至 10 分钟。入选作品将进入首页焦点位，并获得官方正版授权认证。</p>
+        </div>
+        <div class="tf-news__item">
+          <div class="tf-news__date">2026 — 11 — 09</div>
+          <h3>创作者成长中心上线「脚本灵感」工具</h3>
+          <p>基于站内优质内容的结构整理，提供选题方向、叙事节奏与标题建议，帮助第一次拍片的朋友把创意落地。</p>
+        </div>
+        <div class="tf-news__item">
+          <div class="tf-news__date">2026 — 10 — 27</div>
+          <h3>第 11 期影像挑战赛结果公布</h3>
+          <p>本期收到 431 条投稿，经社区投票与编辑评审，共 12 条作品入选。完整名单已在官方账号发布，感谢每一位参与者。</p>
+        </div>
+        <div class="tf-news__item">
+          <div class="tf-news__date">2026 — 10 — 12</div>
+          <h3>乡村影像教室第三站落地完成</h3>
+          <p>铁粉空间联合公益伙伴，为乡镇中学提供设备与课程支持，帮助学生在两周内完成自己的第一支短片。这是我们持续履行的社会责任项目。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="tf-section" id="tf-faq">
+    <div class="tf-wrap">
+      <div class="tf-sec-head">
+        <div>
+          <span class="tf-kicker">Help</span>
+          <h2>常见问题</h2>
+          <p class="tf-lead">关于内容发布、版权与合作，先看看这里有没有答案。</p>
+        </div>
+      </div>
+      <div class="tf-faq">
+        <details open>
+          <summary>我没有专业设备，可以投稿吗？</summary>
+          <p>可以。铁粉空间更看重内容的真实与完整，而非器材参数。手机拍摄只要画质清晰、收音可辨、画面稳定，就可以提交。上传时会进行基础画质校验，若不符合要求会给出具体修改建议。</p>
+        </details>
+        <details>
+          <summary>作品里的音乐和素材需要注意什么？</summary>
+          <p>请使用平台提供的正版音乐库，或使用你已获得明确授权的素材，并在简介中注明来源。若收到版权异议，编辑团队会先与你沟通，确认后协助替换或下架，不直接处罚。</p>
+        </details>
+        <details>
+          <summary>怎么参与专题企划？</summary>
+          <p>在专题页面点击「参与企划」，或在投稿时选择对应专题标签即可。每个专题有独立的截止时间与拍摄要求，建议先阅读专题说明，再开始拍摄，避免返工。</p>
+        </details>
+        <details>
+          <summary>原创认证有什么用？</summary>
+          <p>通过原创认证的账号会获得标识，并在搜索、专题筛选与推荐位中享有优先展示。认证需要提交作品创作过程的佐证材料，通过后长期有效，若发现违规将取消资格。</p>
+        </details>
+        <details>
+          <summary>品牌可以发起共创合作吗？</summary>
+          <p>可以。请通过「联系与投稿」中的合作通道提交需求，说明行业、企划目标与预算区间。我们会在三个工作日内回复，并匹配风格契合的创作者进行沟通。</p>
+        </details>
+        <details>
+          <summary>评论被删除了怎么办？</summary>
+          <p>评论被处理通常是因为包含攻击性表述或广告信息。你可以在通知中心查看处理原因，若认为有误，可通过反馈入口提交申诉，人工复核一般在两天内完成。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系与投稿 -->
+  <section class="tf-section tf-section--deep" id="tf-join">
+    <div class="tf-wrap">
+      <div class="tf-join">
+        <div>
+          <span class="tf-kicker">Join Us</span>
+          <h2>把你的作品交给一群愿意认真看的人</h2>
+          <p class="tf-lead">投稿长期开放。无论是第一条片子，还是第一百条，我们都建议你先写完一句话的简介——那句话往往决定了片子能不能被看懂。</p>
+          <div class="tf-hero__actions">
+            <button class="tf-btn tf-btn--primary" type="button" data-tf-open="submit">打开投稿入口</button>
+            <button class="tf-btn tf-btn--ghost" type="button" data-tf-open="contact">联系合作</button>
+            <button class="tf-btn tf-btn--ghost" type="button" data-tf-copy>复制本页链接</button>
+          </div>
+        </div>
+        <div class="tf-join__panel">
+          <h3>官方联系信息</h3>
+          <ul class="tf-join__list">
+            <li><b>合作</b><span>brand@tiefanspace.example（仅工作日回复）</span></li>
+            <li><b>投稿</b><span>创作者的投稿统一在站内提交，便于留下版本记录</span></li>
+            <li><b>反馈</b><span>页面右下角随时提交问题，24 小时内人工核对</span></li>
+            <li><b>地址</b><span>铁粉空间内容中心 · 城市影像创作基地</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="tf-footer">
+  <div class="tf-wrap">
+    <div class="tf-footer__grid">
+      <div class="tf-footer__brand">
+        <div class="tf-brand">
+          <span class="tf-brand__mark">铁</span>
+          <span class="tf-brand__text">
+            <span class="tf-brand__name">铁粉空间</span>
+            <span class="tf-brand__slogan">TIE FAN SPACE</span>
+          </span>
+        </div>
+        <p>铁粉空间官方网站 · 以真实记录为核心的生活影像平台，持续运营第七年，坚持原创、正版与高清内容标准。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#tf-focus">焦点内容</a></li>
+          <li><a href="#tf-topic">专题企划</a></li>
+          <li><a href="#tf-wall">影像墙</a></li>
+          <li><a href="#tf-creator">创作者矩阵</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#tf-about">品牌故事</a></li>
+          <li><a href="#tf-news">企业动态</a></li>
+          <li><a href="#tf-faq">帮助中心</a></li>
+          <li><a href="#tf-join">联系我们</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <ul>
+          <li><a href="#tf-topic">报名企划</a></li>
+          <li><a href="#tf-join">作品投稿</a></li>
+          <li><a href="#tf-voices">用户口碑</a></li>
+          <li><a href="#tf-join">品牌合作</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tf-footer__bottom">
+      <span>© 2019—2026 铁粉空间 · 官方网站 · 版权所有</span>
+      <span>内容均为原创或已获授权 · 持续运营中 · 用户至上</span>
+    </div>
+  </div>
+</footer>
+
+<button class="tf-top" id="tf-topbtn" type="button" aria-label="回到顶部">↑</button>
+
+<div class="tf-modal" id="tf-modal" role="dialog" aria-modal="true" aria-labelledby="tf-modal-title">
+  <div class="tf-modal__box">
+    <button class="tf-modal__close" type="button" data-tf-close aria-label="关闭">✕</button>
+    <h3 id="tf-modal-title">投稿入口</h3>
+    <p id="tf-modal-desc">填写作品基本信息，编辑团队会在三个工作日内给出反馈。</p>
+    <form id="tf-modal-form">
+      <div class="tf-modal__field">
+        <input type="text" id="tf-modal-name" placeholder="你的昵称" autocomplete="off">
+        <input type="text" id="tf-modal-title-input" placeholder="作品标题" autocomplete="off">
+        <textarea id="tf-modal-text" rows="3" placeholder="一句话简介：这条片子讲了什么"></textarea>
+      </div>
+      <div class="tf-modal__acts">
+        <button class="tf-btn tf-btn--line" type="button" data-tf-close>取消</button>
+        <button class="tf-btn tf-btn--dark" type="submit">提交</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="tf-toast" id="tf-toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var d = document;
+  function $(s, c){ return (c||d).querySelector(s); }
+  function $$(s, c){ return Array.prototype.slice.call((c||d).querySelectorAll(s)); }
+
+  /* Toast */
+  var toastEl = $('#tf-toast');
+  var toastTimer = null;
+  function toast(msg){
+    if(!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('tf-show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove('tf-show'); }, 2200);
+  }
+
+  /* 移动端导航 */
+  var burger = $('#tf-burger');
+  var nav = $('#tf-nav');
+  if(burger && nav){
+    burger.addEventListener('click', function(){
+      var open = nav.classList.toggle('tf-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.textContent = open ? '✕' : '☰';
+    });
+    $$('a', nav).forEach(function(a){
+      a.addEventListener('click', function(){
+        nav.classList.remove('tf-open');
+        burger.setAttribute('aria-expanded','false');
+        burger.textContent = '☰';
+      });
+    });
+  }
+
+  /* 搜索反馈 */
+  var searchForm = $('#tf-search');
+  var searchInput = $('#tf-search-input');
+  var searchMsg = $('#tf-searchmsg');
+  var searchIndex = [
+    {t:'在城中村开一家修表铺的第十一年', tag:'人物访谈'},
+    {t:'一顿晚饭的十七个步骤', tag:'美食烹饪'},
+    {t:'凌晨四点的菜市场，和它熟悉的脸', tag:'城市探索'},
+    {t:'我用三个月学会给木头上油', tag:'手作DIY'},
+    {t:'深夜便利店的值班记事', tag:'日常记录'},
+    {t:'围炉记事 · 冬季影像企划', tag:'专题企划'},
+    {t:'阿岚影像志', tag:'创作者'},
+    {t:'林小满的家常菜', tag:'创作者'},
+    {t:'新人影像挑战赛', tag:'活动报名'},
+    {t:'乡村影像教室', tag:'企业动态'}
+  ];
+  if(searchForm){
+    searchForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var q = (searchInput.value || '').trim();
+      if(!q){
+        searchMsg.textContent = '输入关键词试试，例如「手作」「菜市场」「企划」。';
+        return;
+      }
+      var hits = searchIndex.filter(function(item){
+        return item.t.indexOf(q) > -1 || item.tag.indexOf(q) > -1;
+      });
+      if(hits.length){
+        searchMsg.textContent = '找到 ' + hits.length + ' 条相关内容：' + hits.slice(0,3).map(function(h){ return h.t; }).join('、') + (hits.length > 3 ? ' 等' : '');
+      }else{
+        searchMsg.textContent = '暂未找到「' + q + '」的相关内容，可在影像墙浏览近期投稿。';
+      }
+    });
+  }
+
+  /* 点赞 */
+  $$('[data-tf-like]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var span = $('span', btn);
+      var txt = span ? span.textContent.replace(/,/g,'') : '0';
+      var num = parseInt(txt, 10) || 0;
+      var liked = btn.classList.toggle('is-liked');
+      var next = liked ? num + 1 : Math.max(0, num - 1);
+      if(span) span.textContent = next.toLocaleString('en-US');
+      btn.firstChild.nodeValue = liked ? '♥ ' : '♡ ';
+      toast(liked ? '已点赞，感谢支持' : '已取消点赞');
+    });
+  });
+
+  /* 收藏 */
+  $$('[data-tf-save]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var saved = btn.classList.toggle('is-saved');
+      btn.textContent = saved ? '★ 已收藏' : '☆ 收藏';
+      toast(saved ? '已加入「我的收藏」' : '已从收藏中移除');
+    });
+  });
+
+  /* 评论弹窗 */
+  $$('[data-tf-comment]').forEach(function(btn){
+    btn.addEventListener('click', function(){ openModal('comment'); });
+  });
+
+  /* 复制链接 */
+  $$('[data-tf-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var url = 'https://tiefanspace.example/';
+      function done(){ toast('链接已复制，可以分享给同好了'); }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(done).catch(function(){ fallback(); });
+      }else{
+        fallback();
+      }
+      function fallback(){
+        var ta = d.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        d.body.appendChild(ta);
+        ta.select();
+        try{ d.execCommand('copy'); done(); }
+        catch(err){ toast('复制失败，请手动分享本页'); }
+        d.body.removeChild(ta);
+      }
+    });
+  });
+
+  /* 作者信息弹窗 */
+  var authorData = {};
+  $$('[data-tf-author]').forEach(function(card, i){
+    var raw = card.getAttribute('data-tf-author') || '';
+    var parts = raw.split('|');
+    authorData['a' + i] = {
+      name: parts[0] || '创作者',
+      field: parts[1] || '',
+      bio: parts[2] || '',
+      works: parts[3] || '',
+      fans: parts[4] || ''
+    };
+    var btn = $('[data-tf-authorbtn]', card);
+    if(btn){
+      btn.addEventListener('click', function(){
+        var info = authorData['a' + i];
+        openModal('author', info);
+      });
+    }
+  });
+
+  /* 弹窗 */
+  var modal = $('#tf-modal');
+  var modalTitle = $('#tf-modal-title');
+  var modalDesc = $('#tf-modal-desc');
+  var modalForm = $('#tf-modal-form');
+
+  function openModal(type, payload){
+    if(!modal) return;
+    if(type === 'submit'){
+      modalTitle.textContent = '投稿入口';
+      modalDesc.textContent = '填写作品基本信息，编辑团队会在三个工作日内给出反馈。';
+      modalForm.style.display = '';
+    }else if(type === 'contact'){
+      modalTitle.textContent = '联系与品牌合作';
+      modalDesc.textContent = '请留下你的联系方式与合作方向，我们会按行业匹配对应的内容负责人。';
+      modalForm.style.display = '';
+    }else if(type === 'comment'){
+      modalTitle.textContent = '写下你的评论';
+      modalDesc.textContent = '友善、具体、有内容的评论，更容易被作者看到。';
+      modalForm.style.display = '';
+    }else if(type === 'author' && payload){
+      modalTitle.textContent = payload.name + ' · 创作者档案';
+      modalDesc.textContent = payload.field + '｜' + payload.bio + '｜' + payload.works + '｜' + payload.fans;
+      modalForm.style.display = 'none';
+    }
+    modal.classList.add('tf-open');
+    d.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    if(!modal) return;
+    modal.classList.remove('tf-open');
+    d.body.style.overflow = '';
+  }
+  $$('[data-tf-open]').forEach(function(el){
+    el.addEventListener('click', function(){ openModal(el.getAttribute('data-tf-open')); });
+  });
+  $$('[data-tf-close]').forEach(function(el){
+    el.addEventListener('click', closeModal);
+  });
+  if(modal){
+    modal.addEventListener('click', function(e){
+      if(e.target === modal) closeModal();
+    });
+  }
+  d.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeModal();
+  });
+  if(modalForm){
+    modalForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = ($('#tf-modal-name').value || '').trim();
+      var title = ($('#tf-modal-title-input').value || '').trim();
+      if(!name || !title){
+        toast('昵称和作品标题都要填一下');
+        return;
+      }
+      closeModal();
+      modalForm.reset();
+      toast('已收到你的投稿信息，官方会在三个工作日内回复');
+    });
+  }
+
+  /* 回到顶部 */
+  var topBtn = $('#tf-topbtn');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 520){ topBtn.classList.add('tf-show'); }
+    else{ topBtn.classList.remove('tf-show'); }
+  }, {passive:true});
+  if(topBtn){
+    topBtn.addEventListener('click', function(){
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  /* 数据滚动（轻量） */
+  var counters = $$('[data-tf-count]');
+  if('IntersectionObserver' in window && counters.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var el = entry.target;
+        var end = parseInt(el.getAttribute('data-tf-count'), 10) || 0;
+        var suffix = el.textContent.replace(/[0-9,]/g, '');
+        var start = 0;
+        var dur = 900;
+        var t0 = null;
+        function step(ts){
+          if(!t0) t0 = ts;
+          var p = Math.min((ts - t0) / dur, 1);
+          var val = Math.floor(start + (end - start) * (1 - Math.pow(1 - p, 3)));
+          el.textContent = val.toLocaleString('en-US') + suffix;
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+        io.unobserve(el);
+      });
+    }, {threshold:0.4});
+    counters.forEach(function(c){ io.observe(c); });
+  }
+})();
+</script>
+</body>
+                  </html>
